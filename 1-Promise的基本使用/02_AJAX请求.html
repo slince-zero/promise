@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>点击发送AJAX请求</button>
+    <script>
+      let btn = document.querySelector("button");
+      btn.onclick = () => {
+        // 原生AJAX请求
+        // let xhr = new XMLHttpRequest();
+        // xhr.open("GET", "https://api.oioweb.cn/api/weather/GetWeather");
+        // xhr.send();
+        // xhr.onreadystatechange = () => {
+        //   if (xhr.status === 200) {
+        //     console.log(xhr.response);
+        //   } else {
+        //     console.log("请求失败" + xhr.status);
+        //   }
+        // };
+
+        // promise
+        let p = new Promise((resolve, reject) => {
+          let xhr = new XMLHttpRequest();
+          xhr.open("GET", "https://api.oioweb.cn/api/weather/GetWeather");
+          xhr.send();
+          xhr.onreadystatechange = () => {
+            if (xhr.status === 200) {
+              resolve(xhr.response);
+            } else {
+              reject("请求失败" + xhr.status);
+            }
+          };
+        });
+        p.then(
+          (data) => {
+            console.log(data);
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
+      };
+    </script>
+  </body>
+</html>
