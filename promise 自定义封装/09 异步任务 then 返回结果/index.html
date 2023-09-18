@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise封装 同步任务 then 方法返回结果</title>
+    <script src="../09 异步任务 then 返回结果/promise.js"></script>
+</head>
+
+<body>
+    <script>
+        let p = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                // resolve('ok');
+                reject('error!!')
+            }, 1000)
+            // resolve('ok');
+            // reject('error!!');
+            // throw '111'
+
+        });
+
+        const result = p.then(value => {
+            console.log(value);
+        }, reason => {
+            console.warn(reason);
+        });
+        console.log(result);
+    </script>
+</body>
+
+</html>

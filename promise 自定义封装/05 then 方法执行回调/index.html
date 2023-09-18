@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise封装 then 方法中执行回调</title>
+    <script src="../05_then 方法执行回调/promise.js"></script>
+</head>
+
+<body>
+    <script>
+        let p = new Promise((resolve, reject) => {
+            // resolve('ok');
+            reject('err');
+        });
+
+        p.then(value => {
+            // 成功回调
+            console.log('11');
+            console.log(value);
+        }, reason => {
+            // 失败回调
+            console.log('22');
+            console.warn(reason);
+        })
+
+    </script>
+</body>
+
+</html>

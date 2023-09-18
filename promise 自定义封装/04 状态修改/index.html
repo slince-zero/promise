@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise封装 状态修改，只能改一次</title>
+    <script src="../04 状态修改/promise.js"></script>
+</head>
+
+<body>
+    <script>
+        let p = new Promise((resolve, reject) => {
+            console.log('11');
+            reject('err');
+        });
+        console.log(p);
+        
+    </script>
+</body>
+
+</html>

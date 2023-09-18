@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise关键问题-异常穿透</title>
+</head>
+
+<body>
+    <script>
+        // 当使用 promise 的 then 链式调用时，在中间中断，不再调用后面的回调函数
+        // 办法：在回调函数中返回一个 pendding 状态的 promise 对象
+        let p = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('ok');
+            }, 1000);
+        })
+        p.then(value => {
+            console.log(value);
+            return new Promise(() => { });
+        }).then(value => {
+            console.log('111');
+        }).then(value => {
+            console.log('33');
+        }).catch(reason => {
+            console.warn(reason);
+        })
+    </script>
+</body>
+
+</html>

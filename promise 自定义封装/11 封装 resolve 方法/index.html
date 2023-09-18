@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise封装 封装 resolve 方法</title>
+    <script src="../11 封装 resolve 方法/promise.js"></script>
+</head>
+
+<body>
+    <script>
+        let p1 = Promise.resolve('ok');
+        let p2 = Promise.resolve(new Promise(resolve => {
+            resolve('成功喽');
+        }));
+        let p3 = Promise.resolve(Promise.resolve('ye'));
+        console.log(p1);
+        console.log(p2);
+        console.log(p3);
+
+    </script>
+</body>
+
+</html>

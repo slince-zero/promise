@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise关键问题-改变状态与指定回调谁先谁后顺序问题</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * 改变 promise 状态和指定回调函数谁先谁后
+         * （1）都有可能，正常情况下是先指定回调再改变状态，但也可以先改变状态再指定回调
+         * （2）如何先改变状态再指定回调
+         *   1. 在执行器中直接调用 resolve()/reject()
+         *   2. 延迟更长事件才调用 then() ，如设置定时器
+         * 
+        */
+        let p = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('ok');
+            }, 1000);
+        });
+
+        // 指定回调
+        p.then(value => {
+            console.log(value);
+        }, reason => {
+
+        });
+    </script>
+</body>
+
+</html>
